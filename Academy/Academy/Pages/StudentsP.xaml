@@ -1,0 +1,35 @@
+﻿<Page x:Class="Academy.Pages.SudentsP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Academy.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SudentsP" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="100" x:Name="SearchTB" TextChanged="SearchTB_TextChanged"></TextBox>
+            <ComboBox Width="100" x:Name="GradesCB" ItemsSource="{Binding AllGrades}" SelectionChanged="GradesCB_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Title}"></Label>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="StudentsDataGrid" ItemsSource="{Binding CurrentStudents}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Surname}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Patronymic}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding StudentText}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
